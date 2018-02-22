@@ -1,7 +1,7 @@
 # deep-social-php-api-client
 PHP Client Library for http://deep.social API
 
-If you are interested in a PHP API for [Deep.Social](http://deep.social), that's you library :)
+If you are interested in a PHP API for [Deep.Social](http://deep.social), that's your library :)
 
 ## About It
  
