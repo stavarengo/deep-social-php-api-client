@@ -1,0 +1,21 @@
+{
+    "name": "stavarengo/deep-social-php-api-client",
+    "description": "PHP Client Library for http://deep.social API",
+    "type": "library",
+    "config": {
+        "process-timeout": 5000,
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Sta\\DeepSocialPhpApiClient\\": "src/DeepSocialPhpApiClient/"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "guzzlehttp/guzzle": "~6.0",
+        "psr/cache": "^1.0",
+        "psr/container": "^1.0",
+        "psr/http-message": "^1.0"
+    }
+}
