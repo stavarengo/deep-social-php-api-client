@@ -1,6 +1,7 @@
 {
     "name": "stavarengo/deep-social-php-api-client",
     "description": "PHP Client Library for http://deep.social API",
+    "licence": "MIT",
     "type": "library",
     "config": {
         "process-timeout": 5000,
