@@ -11,20 +11,25 @@ use Psr\Cache\CacheItemPoolInterface;
 use Psr\Container\ContainerInterface;
 use Sta\DeepSocialPhpApiClient\Exception\MissingDeepSocialConfiguration;
 
-class ClientFactory
+class DeepSocialClientFactory
 {
 
     /**
      * @param ContainerInterface $container
      * @param $requestedName
      * @param array|null $options
-     * @return Client
+     *
+     * @return DeepSocialClient
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      * @throws MissingDeepSocialConfiguration
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName = null, $options = null)
     {
+        if (!is_array($options)) {
+            $options = [];
+        }
+
         $appConfig = [];
         if (isset($options['config'])) {
             $appConfig = $options['config'];
@@ -32,11 +37,13 @@ class ClientFactory
             $appConfig = $container->get('config');
         }
 
-        if (!isset($appConfig['deepSocialPhpApiClient']['deepSocial']['apiToken'])) {
-            throw new MissingDeepSocialConfiguration('Missing configuration entry "deepSocialPhpApiClient.deepSocial.apiToken".');
+        if (!isset($appConfig['Sta\DeepSocialPhpApiClient']['deepSocial']['apiToken'])) {
+            throw new MissingDeepSocialConfiguration(
+                'Missing configuration entry "Sta\DeepSocialPhpApiClient.deepSocial.apiToken".'
+            );
         }
 
-        $config = $appConfig['deepSocialPhpApiClient'];
+        $config = $appConfig['Sta\DeepSocialPhpApiClient'];
 
         $cachePool = null;
         if (isset($options['cachePool'])) {
@@ -47,6 +54,11 @@ class ClientFactory
             $cachePool = $container->get(CacheItemPoolInterface::class);
         }
 
-        return new Client($config['deepSocial']['apiToken'], $cachePool);
+        return new DeepSocialClient($config['deepSocial']['apiToken'], $cachePool);
+    }
+
+    public function createService($serviceLocator)
+    {
+        return $this->__invoke($serviceLocator, self::class);
     }
 }

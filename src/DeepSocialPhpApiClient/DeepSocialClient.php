@@ -11,7 +11,7 @@ use GuzzleHttp\RequestOptions;
 use Psr\Cache\CacheItemPoolInterface;
 use Sta\DeepSocialPhpApiClient\Entity\AudienceData;
 
-class Client
+class DeepSocialClient
 {
     /**
      * @var \GuzzleHttp\Client

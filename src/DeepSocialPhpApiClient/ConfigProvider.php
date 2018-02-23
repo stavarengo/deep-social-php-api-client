@@ -27,8 +27,11 @@ class ConfigProvider
     {
         return [
             'factories' => [
-                Client::class => ClientFactory::class,
+                DeepSocialClient::class => DeepSocialClientFactory::class,
             ],
+            'aliases' => [
+                Deep
+            ]
         ];
     }
 }
