@@ -30,7 +30,6 @@ class ConfigProvider
                 DeepSocialClient::class => DeepSocialClientFactory::class,
             ],
             'aliases' => [
-                Deep
             ]
         ];
     }
