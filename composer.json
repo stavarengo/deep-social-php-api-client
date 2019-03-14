@@ -12,6 +12,13 @@
             "Sta\\DeepSocialPhpApiClient\\": "src/DeepSocialPhpApiClient/"
         }
     },
+    "extra": {
+      "zf": {
+        "component": "Sta\\DeepSocialPhpApiClient",
+        "module": "Sta\\DeepSocialPhpApiClient",
+        "config-provider": "Sta\\DeepSocialPhpApiClient\\ConfigProvider"
+      }
+    },
     "require": {
         "php": "^7.1",
         "guzzlehttp/guzzle": "~6.0",
