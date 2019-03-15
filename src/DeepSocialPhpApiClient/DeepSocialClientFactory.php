@@ -37,13 +37,13 @@ class DeepSocialClientFactory
             $appConfig = $container->get('config');
         }
 
-        if (!isset($appConfig['Sta\DeepSocialPhpApiClient']['deepSocial']['apiToken'])) {
+        if (!isset($appConfig[ConfigProvider::class]['deepSocial']['apiToken'])) {
             throw new MissingDeepSocialConfiguration(
-                'Missing configuration entry "Sta\DeepSocialPhpApiClient.deepSocial.apiToken".'
+                sprintf('Missing configuration entry "%s.deepSocial.apiToken".', ConfigProvider::class)
             );
         }
 
-        $config = $appConfig['Sta\DeepSocialPhpApiClient'];
+        $config = $appConfig[ConfigProvider::class];
 
         $cachePool = null;
         if (isset($options['cachePool'])) {
